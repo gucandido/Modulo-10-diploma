@@ -16,7 +16,6 @@ public class DiplomaController {
     @PostMapping("/analyzeNotes")
     public ResponseEntity<?> postDiploma(@RequestBody @Valid StudentDto student){
 
-
         return new ResponseEntity<>(student, HttpStatus.ACCEPTED);
 
     }
