@@ -1,6 +1,7 @@
 package com.mlschool.mlschool.controller;
 
 import com.mlschool.mlschool.dto.request.StudentDto;
+import com.mlschool.mlschool.dto.response.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ public class DiplomaController {
     @PostMapping("/analyzeNotes")
     public ResponseEntity<?> postDiploma(@RequestBody @Valid StudentDto student){
 
-        return new ResponseEntity<>(student, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new ResponseDto(student), HttpStatus.ACCEPTED);
 
     }
 

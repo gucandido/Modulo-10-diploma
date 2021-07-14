@@ -1,5 +1,6 @@
 package com.mlschool.mlschool.exception;
 
+import com.mlschool.mlschool.dto.exception.MensagemErro;
 import com.mlschool.mlschool.dto.exception.ValidationError;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,12 @@ import java.util.List;
 
 @ControllerAdvice
 public class ApiExceptionControllerAdvice {
+
+    @ExceptionHandler(ArithmeticException.class)
+    public ResponseEntity<?> defaultHandler(ArithmeticException e){
+        MensagemErro ex = new MensagemErro(e.getMessage());
+        return ResponseEntity.internalServerError().body(ex);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<ValidationError>> defaultHandler(MethodArgumentNotValidException e){
