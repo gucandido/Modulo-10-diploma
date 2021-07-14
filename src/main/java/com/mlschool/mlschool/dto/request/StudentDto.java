@@ -1,5 +1,7 @@
 package com.mlschool.mlschool.dto.request;
 
+import com.mlschool.mlschool.entities.Student;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -40,4 +42,7 @@ public class StudentDto {
         this.subjects = subjects;
     }
 
+    public static Student dtoToClass(StudentDto dto){
+        return new Student(dto);
+    }
 }

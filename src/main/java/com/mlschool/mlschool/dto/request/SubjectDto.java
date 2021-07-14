@@ -1,5 +1,6 @@
 package com.mlschool.mlschool.dto.request;
 
+import com.mlschool.mlschool.entities.Subject;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -39,4 +40,9 @@ public class SubjectDto {
     public void setNote(double note) {
         this.note = note;
     }
+
+    public static Subject dtoToClass(SubjectDto dto){
+        return new Subject(dto);
+    }
+
 }
