@@ -8,8 +8,9 @@ import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
-public class ResponseDto {
+public class DiplomaDto {
 
     private String message;
 
@@ -22,14 +23,14 @@ public class ResponseDto {
     @Valid
     private StudentDto student;
 
-    public ResponseDto(StudentDto dto) {
+    public DiplomaDto(StudentDto dto, String message) {
 
         this.student = dto;
         Student std = StudentDto.dtoToClass(dto);
 
         this.average = std.calcAverage();
 
-        this.message = "sua media foi de "+this.average;
+        this.message = message;
 
     }
 
@@ -57,4 +58,16 @@ public class ResponseDto {
         this.student = student;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentDto thatStudent = (StudentDto) o;
+        return Objects.equals(student, thatStudent);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(student);
+    }
 }
